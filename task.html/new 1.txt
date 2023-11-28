@@ -1,0 +1,92 @@
+
+
+<div class="row">
+  <table class="table text-center">
+      <tr >
+        <th>Sr No</th>
+        <th>Project</th>
+        <th> Project Module </th>
+        <th>Project Tasks</th>
+        <th>Action</th>
+      </tr>
+
+      <tr *ngFor="let mytask of  mytasks; let i = index">
+        <th>{{i+1}}</th>
+        <td>{{mytask.project}}</td>
+        <td>{{mytask.projectmodule}}</td>
+        <td>{{mytask.projecttasks}}</td>
+
+        <td>
+          <input type="button" class="btn btn-primary" (click)="open(mytask.id)" value="edit"> &nbsp;
+          <input type="button" class="btn btn-danger" (click)="close(mytask.id)" value="delete"> &nbsp;
+
+          <!-- <input type="button" class="btn btn-danger" value="task" routerLink="/admin/projecttasks/"> -->
+        </td>
+      </tr>
+  </table>
+</div>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1pt solid #D8D9DA;
+      font-size: 12pt;
+    }
+ 
+    th, td {
+      border: 1pt solid #D8D9DA;
+      padding: 8px;
+      text-align: left;
+    }
+ 
+    th {
+      background-color: #DEFED;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+ 
+<table>
+  <thead>
+    <tr>
+      <th>Employee Name</th>
+      <th>Designation</th>
+      <th>Date of Joining</th>
+    </tr>
+  </thead>
+  <tbody>
+    <xsl:for-each select="employees/employee[Designation='Technical Writer']">
+      <tr>
+        <td><xsl:value-of select="EmployeeName"/></td>
+        <td><xsl:value-of select="Designation"/></td>
+        <td><xsl:value-of select="DateOfJoining"/></td>
+      </tr>
+    </xsl:for-each>
+ 
+    <xsl:for-each select="employees/employee[Salary > 500000 and Salary < 700000]">
+      <tr>
+        <td><xsl:value-of select="EmployeeName"/></td>
+        <td><xsl:value-of select="Designation"/></td>
+        <td><xsl:value-of select="DateOfJoining"/></td>
+      </tr>
+    </xsl:for-each>
+  </tbody>
+</table>
+ 
+</body>
+</html>
+
+<employees>
+  <employee>
+    <EmployeeName>John Doe</EmployeeName>
+    <Designation>Technical Writer</Designation>
+    <DateOfJoining>2023-01-01</DateOfJoining>
+    <Salary>600000</Salary>
+  </employee>
+ 
+</employees>
